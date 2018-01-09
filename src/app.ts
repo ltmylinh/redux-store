@@ -8,7 +8,7 @@ const destroy = document.querySelector('.unsubscribe') as HTMLButtonElement;
 const todoList = document.querySelector('.todos') as HTMLLIElement;
 
 const store = new fromStore.Store({}, {
-  todos: [{label: 'meal', completely: false}]
+  todos: [{label: 'Breadfast', complete: false}]
 });
 
 button.addEventListener(
@@ -18,11 +18,12 @@ button.addEventListener(
 
     const payload = { label: input.value, complete: false };
 
-    //console.log(payload);
+    store.dispatch({
+      type: 'ADD_TODO',
+      payload
+    });
 
     input.value = '';
-
-    console.log(store.value);
   },
   false
 );
